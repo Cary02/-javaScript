@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>bind、call、apply</title>
+    <script>
+
+        function fn(x,y) {
+            console.log(this);
+            console.log(x+y);
+        }
+
+        //call
+        //1.调用函数，改变this的指向
+        //2.第一个参数：设置函数内部this指向
+        //  其他参数 ： 对应函数需要传入的参数
+        //3.函数的返回值；call的返回值就是对应函数的返回值
+        //4.测试
+        var o = {
+            name:'zs'
+        }
+        fn.call(o,5,6);
+
+
+
+
+
+
+
+
+
+    </script>
+</head>
+<body>
+
+</body>
+</html>

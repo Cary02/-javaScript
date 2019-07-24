@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>闭包案例</title>
+</head>
+<body>
+ 字体的大小
+ <input type="button" id="btn1" value="按钮一">
+ <input type="button" id="btn2" value="按钮二">
+ <input type="button" id="btn3" value="按钮三">
+</body>
+<script>
+    var btn1 = document.getElementById('btn1');
+    var btn2 = document.getElementById('btn2');
+    var btn3 = document.getElementById('btn3');
+
+    btn1.onclick = makeFun(12);
+    btn2.onclick = makeFun(14);
+    btn3.onclick = makeFun(16);
+
+
+    function makeFun(size) {
+        return function () {
+            document.body.style.fontSize = size + 'px';
+        }
+    }
+
+</script>
+</html>

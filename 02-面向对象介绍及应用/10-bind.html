@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>bind</title>
+</head>
+<body>
+</body>
+<script>
+    //函数也是一个对象
+    var a = 123;
+    function fn() {
+        console.log(this.a);
+    }
+
+    window.fn();
+
+
+    //bind  方法是ES5中新增的方法
+    //新建一个方法，bind中的第一个参数可以改变函数中的this的指向
+    //bind并没有调用方法
+    var o ={ a: 'abc'};
+    var fn1 = fn.bind(o);
+    fn1();
+    //fn1()  相当于  o.fn()   通过bind函数把fn中的this指向window改成了this指向o这个对象
+
+
+
+</script>
+
+</html>

@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>静态成员和实例成员</title>
+    <script>
+
+         var Math = {
+             PI: 3.1415926,
+             min: function () {
+             },
+             max: function () {
+             }
+         }
+         
+         console.log(Math.max());
+         //静态成员：直接使用对象来调用
+         //工具中使用静态成员 ，往往只有一个对象的时候
+         //Math.PI;
+         //Math.max();
+         
+         //实例成员：构造函数中的成员就是实例成员
+         //当有多个对象的时候，使用构造函数的形式来创建对象
+         //什么是实例：对象的另一种说法
+        function Person(name, age) {
+            this.name = name;
+            this.age = age;
+            this.sayHi = function () {
+            }
+        }
+        var person = new Person('zs',18);
+        console.log(person.sayHi());
+        
+        
+        
+    </script>
+</head>
+<body>
+
+</body>
+</html>

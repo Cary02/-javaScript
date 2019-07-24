@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>组合继承</title>
+    <script>
+        function Person (name, age,sex) {
+            this.name = name;
+            this.age = age;
+            this.sex = sex;
+        }
+
+        Person.prototype.sayHi = function () {
+            console.log(111);
+        }
+        function Student (name,age,sex,score) {
+            Person.call(this,name,age,sex);
+            this.score = score;
+        }
+        Student.prototype = new Person();
+        Student.prototype.constructor = Student;
+
+        Student.prototype.exam = function () {
+            console.log('考试');
+        }
+
+
+
+        var s1 = new Student('zs',19,'男',100);
+        console.dir(s1);
+        s1.sayHi();
+
+        var p1 = new Person('zs',19,'男',100);
+        console.dir(p1);
+
+
+
+
+
+    </script>
+</head>
+<body>
+
+</body>
+</html>

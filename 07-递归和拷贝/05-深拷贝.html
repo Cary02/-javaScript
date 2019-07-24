@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>深拷贝</title>
+    <script>
+        var obj1 = {
+            name: 'zs',
+            age: 19,
+            sex:'男',
+            dog: {name:'金毛',age:2,color:'pink'},
+            friend:['ls','ww','ll']
+        }
+
+        var obj2 = {};
+
+        function copy(o1,o2) {
+            for (var key in o1) {
+                var item = o1[key];
+                if (item instanceof Object){
+                    //对象类型
+                    o2[key] = {};
+                    copy(item,o2[key]);
+                } else if (item instanceof Array){
+                    //数组类型
+                    o2[key] = [];
+                    copy(item,o2[key]);
+                } else{
+                    //简单类型
+                    o2[key] = o1[key];
+                }
+
+            }
+        }
+        copy(obj1,obj2);
+        //改变obj1的属性
+        obj1.name = 'la';
+        obj1.dog.name = 'xxx';
+        console.dir(obj2);
+
+
+    </script>
+</head>
+<body>
+
+</body>
+</html>

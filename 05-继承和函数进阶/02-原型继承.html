@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>原型继承</title>
+    <script>
+        //继承：类型和类型之间的关系 ，javaScript中本身没有继承，只是模拟来的
+        //学生类型：老师类型 -》Person类型
+        //继承的目的：把子类型中共同的成员提取到父类型中，代码重用
+        //什么时候用到继承：一般javaScript中是不用继承的，一般都是写框架的时候用到，还有需要赋值很多共同属性的时候。
+
+
+        //原型继承：无法设置构造函数的参数，因为下面的Person只调用一次，只能设置一次参数，
+        //         当有多个new Student时，后面的参数无法改变  所以一般不用
+
+
+
+        //父类型
+        function Person() {
+            this.name = 'zs';
+            this.age = 18;
+            this.sex = '男';
+        }
+
+        //子类型
+        function Student() {
+            this.score = 100;
+        }
+
+
+        //原型继承
+
+        //当改变prototype的值的时候，必须把constructor的值改回来
+        Student.prototype = new Person();
+        Student.prototype.constructor = Student;
+
+        var s1 = new Student();
+        console.dir( s1 );
+        console.log( s1.name );
+        console.log( s1.age );
+        console.log( s1.sex );
+
+
+    </script>
+</head>
+<body>
+
+</body>
+</html>

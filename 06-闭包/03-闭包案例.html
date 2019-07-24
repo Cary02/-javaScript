@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>闭包案例</title>
+</head>
+<body>
+<div>
+    <ul id="box">
+        <li>安其拉</li>
+        <li>蓝林旺</li>
+        <li>貂蝉</li>
+        <li>露娜</li>
+    </ul>
+</div>
+</body>
+<script>
+    /*
+    var box = document.getElementById('box');
+    var list = box.children;
+    for (var i = 0; i < list.length ; i++) {
+        var li = list[i];
+        li.index = i;
+        li.onclick = fn;
+    }
+    function fn() {
+            console.log(this.index)
+    }*/
+
+    //用闭包实现
+    var box = document.getElementById('box');
+    var list = box.children;
+    for (var i = 0; i < list.length; i++) {
+        var li = list[i];
+        (function (i) {
+            li.onclick = function () {
+                console.log(i);
+            }
+        })(i);
+    }
+
+
+</script>
+
+</html>

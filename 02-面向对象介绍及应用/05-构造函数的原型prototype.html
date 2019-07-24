@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>构造函数中的原型prototype</title>
+    <script>
+
+        /*function Person(name, age) {
+            this.name = name;
+            this.age = age;
+            this.sayHi = function () {
+                console.log('你好呀' + this.name);
+            }
+        }
+        var p1 = new Person('zd', 18);
+        var p2 = new Person('ls',19);
+        p1.sayHi();
+        p2.sayHi();
+
+        //比较的是sayHi函数的地址
+        console.log(p1.sayHi === p2.sayHi);*/
+
+
+        /*每次通过构造函数Person创建对象的时候，都会在内存中开辟新的内存存储p1和p1
+        * 但是p1,p2每次调用Person构造函数里面的sayHi函数时，又会在内存中开辟新的内存存储sayHi函数
+        * 导致每一次新建对象调用sayHi时都要开辟新的内存，影响速率。*/
+
+        //如何解决
+        //方法1
+        /*function Person(name, age) {
+        this.name = name;
+        this.age = age;
+        this.sayHi = sayHi;
+        }
+        //在全局中定义一个sayHi函数，通过对象直接调用
+        //缺点：当构造函数中需要很多方法的时候，就要在全局中定义很多方法，也会导致速率问题
+
+        function sayHi() {
+            console.log('你好呀' + this.name);
+
+        }
+        var p1 = new Person('zd', 18);
+        var p2 = new Person('ls',19);
+        p1.sayHi();
+        p2.sayHi();
+
+        //比较的是sayHi函数的地址
+        console.log(p1.sayHi === p2.sayHi);*/
+
+        //方法2
+
+        //每一个构造函数都有一个属性   原型 / 原型对象  prototype
+        function Person(name, age) {
+            this.name = name;
+            this.age = age;
+        }
+        //Person.prototype就是一个对象
+        console.log(Person.prototype);
+
+        Person.prototype.sayHi = function () {
+            console.log('你好呀' + this.name);
+        }
+        //当有很多函数的时候，将Person。prototype设置成一个空对象，再设置属性
+       /* Person.prototype = {
+            //改变Person.prototype的时候必须给constructor重新赋值
+            constructor:Person,
+            sayHi: function () {
+                console.log('你好呀' + this.name);
+            },
+            sayHello: function () {
+                console.log('你好呀' + this.name);
+            }
+        }*/
+
+        //通过Person构造函数，创建的对象，可以访问Person.prototype中的成员
+        var p1 = new Person('zd', 18);
+        var p2 = new Person('ls',19);
+        p1.sayHi();
+        p2.sayHi();
+
+        //比较的是sayHi函数的地址
+        console.log(p1.sayHi === p2.sayHi);
+
+
+
+
+
+
+
+    </script>
+</head>
+<body>
+
+</body>
+</html>

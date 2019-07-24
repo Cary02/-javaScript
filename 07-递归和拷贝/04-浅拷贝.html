@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>浅拷贝</title>
+    <script>
+        //浅拷贝 ：把一个对象里面的属性复制到另外一个对象中去
+        var obj1 = {
+            name: 'zs',
+            age: 19,
+            sex:'男',
+            dog: {name:'金毛',age:2,color:'pink'}
+        }
+
+        var obj2 ={};
+
+        function copy(o1,o2) {
+            for (var key in o1) {
+                o2[key] = o1[key];
+            }
+        }
+
+        copy(obj1,obj2);
+        //改变obj1对象中的属性，obj2中的属性会改变吗？
+        obj1.name = 'xxx';//-->不会改变
+        obj1.dog.name = '贵宾';//-->改变了
+        //原因：dog是一个复杂类型属性，是一个对象，copy的时候只是把dog的地址拷贝过去，
+        // obj1和obj2里面的dog属性共用一个属性，所以改变obj1的dog对象的属性，obj2的也会改变
+
+        console.dir(obj2);
+
+
+
+
+
+
+    </script>
+</head>
+<body>
+
+</body>
+</html>

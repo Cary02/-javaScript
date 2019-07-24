@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>代码分析</title>
+    <script>
+        //代码1
+        var name = 'the window';
+        var obj = {
+            name : 'the obj',
+            fn: function () {
+                return function () {
+                    return this.name;
+                }
+            }
+        }
+        console.log(obj.fn()());
+        /*结果：the window
+          有没有发生闭包：没有
+          为什么：因为返回的函数作用域中并没有访问到fn函数作用域中的变量
+        * */
+        //代码2
+        var name = 'the window';
+        var obj = {
+            name : 'the obj',
+            fn: function () {
+                var that = this;
+                return function () {
+                    return that.name;
+                }
+            }
+        }
+        console.log(obj.fn()());
+        
+        
+        
+    </script>
+</head>
+<body>
+
+</body>
+</html>

@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>表单验正封装</title>
+</head>
+<body>
+姓名：<input type="text" id="txtName"><span></span><br>
+QQ号：<input type="text" id="txtQQ"><span></span><br>
+手机号：<input type="text" id="txtPhone"><span></span><br>
+邮箱：<input type="text" id="txtEMail"><span></span><br>
+日期：<input type="text" id="txtDate"><span></span><br>
+
+</body>
+<script>
+    function addCheck(elementID, reg, tip) {
+        var element = document.getElementById(elementID);
+        element.onblur = function () {
+            var span = this.nextElementSibling;
+            if (!reg.test(this.value)) {
+                span.innerText = tip;
+                span.style.color = 'red';
+            } else {
+                span.innerText = '';
+                span.style.color = '';
+            }
+        }
+    }
+    //验证名字
+    addCheck('txtName',/^[\u4e00-\u9fa5]{2,4}$/,'请输入2-4个汉字');
+    //验证QQ号
+    addCheck('txtQQ',/^[1-9][0-9]{4,8}$/,'请输入正确的QQ号');
+    //验证手机号
+    addCheck('txtPhone',/^(13[0-9]|14[5|7]|15[0|1|2|3|5|6|7|8|9]|18[0|1|2|3|5|6|7|8|9])\d{8}$/,'请输入正确的手机号');
+    //验证邮箱
+    addCheck('txtEMail',/\w+@\w+(\.\w+)+/,'请输入正确的邮箱');
+    //验证日期
+    addCheck('txtDate',/^\d{4}-\d{1,2}-\d{1,2}$/,'请输入正确的日期');
+
+
+
+
+</script>
+</html>

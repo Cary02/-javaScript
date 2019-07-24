@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>函数的定义方式</title>
+    <script>
+        //函数声明
+        function fn() {
+            console.log(123);
+        }
+        //函数表达式
+        var fn1 = function () {
+            console.log('abc');
+        }
+
+
+        //函数声明和函数表达式的区别
+        //1.先调用函数，在进行声明
+
+        //函数声明
+        fn();
+        function fn() {
+            console.log(123);
+        }
+
+        //函数表达式
+        fn1();
+        var fn1 = function () {
+            console.log('abc');
+        }
+
+        //javaScript中的代码会先预解析，把变量和函数提前
+        // 预解析之后的代码
+        /*function fn() {
+            console.log(123);
+        }
+        fn();
+
+        var fn1;
+        //此时fn1是undefined的，下面的代码执行会报错
+        fn1();
+        fn1 = function () {
+            console.log('abc');
+        }*/
+
+
+        //区别二
+        //现代浏览器  不会提升if语句中的函数声明，但是老版本的浏览器会提升函数声明但不会提升函数表达式，
+        // 提升时后面的函数覆盖前面的函数，不管条件怎样，输出的结果一直都是abc
+        if (true) {
+            function fn() {
+                console.log(123);
+            }
+        } else {
+            function fn() {
+                console.log('abc');
+            }
+        }
+        fn();
+        //解决办法
+        /*var fn;
+        if (true) {
+            fn = function () {
+                console.log(123);
+            }
+        } else {
+            fn = function () {
+                console.log('abc');
+            }
+        }
+        fn();*/
+
+
+
+    </script>
+</head>
+<body>
+
+</body>
+</html>

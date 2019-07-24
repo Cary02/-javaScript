@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>函数的调用形式和this的指向</title>
+    <script>
+        //1.普通函数调用   this指向window
+        /*function fn() {
+            console.log(this);
+        };
+        window.fn();*/
+
+
+        //2.方法调用   this指向调用该函数的对象
+        /*var obj = {
+            name:'zs',
+            fn: function () {
+                console.log(this);
+            }
+        }
+        obj.fn();*/
+
+
+        //3.构造函数调用   this指向该构造函数创建的对象
+
+        //4.事件函数事件调用    this指向触发该事件的对象
+
+        //5.作为定时器的参数    this指向window
+
+        //总结：函数内部的this，是有函数调用的时候来确定其指向的
+
+
+
+    </script>
+</head>
+<body>
+
+</body>
+</html>

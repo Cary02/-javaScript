@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>属性查找规则</title>
+    <script>
+
+        //属性查找规则
+
+        function Person(name, age) {
+            this.name = name;
+            this.age = age;
+        }
+        Person.prototype.text = 'abc';
+        
+        var p1 = new Person('zd', 18);
+        var p2 = new Person('ls',19);
+        
+        //p1对象的原型对象的原型对象   Object构造函数的原型对象
+        //console.log(p1.__proto__.__proto__ === Object.prototype)   --true;
+        
+        //读取属性   先在对象本身查找，如果没有找到就会去原型链上查找
+        console.log(p1.text);
+        
+        //设置属性
+        p1.name = 'xxx';
+        //text属性在原型对象上，而在设置属性值的时候，不会收索原型链，
+        //而是直接给对象新增一个text属性，当重新赋值的时候不会改变原型链上的值
+        p1.test = '123xxx';
+
+        console.log(p1.name);
+        console.log(p1.text);
+        console.log(p2.name);
+        console.log(p2.text);
+
+        
+        
+        
+        
+    </script>
+    
+</head>
+<body>
+
+</body>
+</html>

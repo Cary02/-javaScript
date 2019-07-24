@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>闭包</title>
+    <script>
+        //闭包：Closures（闭包）是使用被作用域封闭的变量，函数，闭包等执行的一个函数的作用域。
+        //通常我们用其相应的函数来指代这些作用域。（可以访问独立数据的函数）
+
+        //闭包的特点 ：延展了函数的作用域范围
+
+
+        //通俗来说：闭包就是在一个作用域中可以访问另一个作用域的变量
+        
+        //未发生闭包
+        /*function fn() {
+            var n = 10;
+            return n;
+        }
+        fn();*/
+        
+        //发生闭包
+        function fn() {
+            var n = 10;
+            return function () {
+                return n;
+            }
+        }
+        var f = fn();
+        console.log(f());
+        
+
+
+
+
+    </script>
+</head>
+<body>
+
+</body>
+</html>

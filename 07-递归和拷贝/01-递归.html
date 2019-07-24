@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>递归</title>
+    <script>
+        //递归：自己调用自己
+        //在递归过程中会出错：内存溢出，超过了最大的堆栈大小
+       /* function f() {
+            console.log(1);
+            f();
+        }
+        f();*/
+
+        //1+2+3+4+...+n
+        //n=3  3+getSum(3-1)-->2+1
+        //n=2  2+getSum(2-1)-->1
+        //n=1  1
+        //当getSum(n)执行的时候，必须得等return里面的getSum(n-1)执行完才能继续执行
+        //递归一般都要写一个结束的条件
+        function getSum(n) {
+            if (n===1) {
+                return 1;
+            }
+            return n + getSum(n-1);
+        }
+        console.log(getSum(3));
+
+
+
+
+    </script>
+</head>
+<body>
+
+</body>
+</html>

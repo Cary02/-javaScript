@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>text</title>
+    <script>
+        function Person(name, age, sex) {
+            this.name = name;
+            this.age = age;
+            this.sex = sex;
+        }
+        function Student(name , age, sex ,score) {
+            Person.call(this,name,age,sex);
+            this.score = score;
+        }
+        Person.prototype.sayHi = function () {
+            console.log(this.name + '哈哈');
+        }
+        Student.prototype = new Person();
+        Student.prototype.constructor = Student;
+        var s1 = new Student('zs',19,'男',100);
+        console.dir(s1);
+        s1.sayHi();
+
+
+
+
+        
+    </script>
+</head>
+<body>
+
+</body>
+</html>

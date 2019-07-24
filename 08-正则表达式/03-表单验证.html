@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>表单验证</title>
+</head>
+<body>
+
+姓名：<input type="text" id="txtName"><span></span><br>
+QQ号：<input type="text" id="txtQQ"><span></span><br>
+手机号：<input type="text" id="txtPhone"><span></span><br>
+邮箱：<input type="text" id="txtEMail"><span></span><br>
+日期：<input type="text" id="txtDate"><span></span><br>
+</body>
+<script>
+    //验证名字
+    var txtName = document.getElementById('txtName');
+    txtName.onblur = function () {
+        var span = this.nextElementSibling;
+        var reg = new RegExp('^[\u4e00-\u9fa5]{2,4}$');
+        if (!reg.test(this.value)) {
+            span.innerText = '请输入2-4个汉字';
+            span.style.color = 'red';
+        }else {
+            span.innerText = '';
+            span.style.color = '';
+        }
+    }
+
+    //验证QQ号
+    var txtName = document.getElementById('txtQQ');
+    txtName.onblur = function () {
+        var span = this.nextElementSibling;
+        var reg = new RegExp('^[1-9][0-9]{4,8}$');
+        if (!reg.test(this.value)) {
+            span.innerText = '请输入正确的QQ号';
+            span.style.color = 'red';
+        }else {
+            span.innerText = '';
+            span.style.color = '';
+        }
+    }
+
+
+
+</script>
+</html>

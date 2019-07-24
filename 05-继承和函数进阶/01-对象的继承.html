@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>对象的继承</title>
+    <script>
+
+        var wjl = {
+            name: '王建林',
+            money: 100000000,
+            home: ['别墅', '学区房'],
+            car: ['玛莎利蒂', '法拉利'],
+        }
+        var wsc = {
+            name: '王思聪'
+        }
+
+        //并不是继承，只是对象的拷贝   可用在贪吃蛇吃食物拷贝最后一个蛇节的属性
+        function extend(parent, child) {
+            for (var key in parent) {
+                //如果child中有这个属性则跳出此次循环，不用赋值
+                if (child[key]) {
+                    continue;
+                }
+                child[key] = parent[key];
+            }
+        }
+        extend(wjl,wsc);
+        console.dir(wsc);
+    </script>
+</head>
+<body>
+
+</body>
+</html>

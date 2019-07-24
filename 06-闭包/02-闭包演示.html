@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>闭包演示</title>
+    <script>
+        //求随机数
+        function getFun() {
+            var random = parseInt(Math.random()*10) + 1;
+            return function () {
+                return random;
+            }
+        }
+        var fn = getFun();
+        console.log(fn());
+
+
+        //求和
+        function fnn(n) {
+            return function (m) {
+                console.log(n+m);
+            }
+        }
+        var fm = fnn(100);
+        fm(3);
+
+
+
+
+
+    </script>
+</head>
+<body>
+
+</body>
+</html>

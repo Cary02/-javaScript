@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>使用原型对象的注意点</title>
+    <script>
+        function Student(name, age) {
+            this.name = name;
+            this.age = age;
+        }
+        var s2 = new Student('zs', 20);
+        //注意点2
+        //结果是undefined
+        //因为s2.__proto__指向的是原来的Student的原型对象，还没有重新赋值，
+        //应该先去设置原型属性，再创建对象，才可以访问原型对象的成员
+        console.log(s2.sayHi);
+
+        Student.prototype = {
+            // constructor: Student,
+            sayHi: function () {
+                console.log('sayHi');
+            },
+            sayHello: function () {
+                console.log('sayHello');
+            }
+        }
+        var s1 = new Student('ls', 19);
+        //注意点1
+        //应该输出的是创建s1的构建函数Student，但是为什么输出的是f Object（）
+        //因为上面的Student.prototype对象重新赋值了，所以就会找Student的原型对象的原型对象的构造函数Object
+        //所以当给Student.prototype对象重新赋值的时候应该重新给constructor赋值
+        console.dir(s1.constructor);
+
+
+
+
+
+
+    </script>
+</head>
+<body>
+
+</body>
+</html>

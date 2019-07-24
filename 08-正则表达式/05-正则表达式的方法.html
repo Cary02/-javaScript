@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>正则表达式的方法</title>
+</head>
+<body>
+
+
+<script>
+    //1.内置对象RegExp
+    // test() 匹配
+    // exec() 提取 只能提取一个内容
+
+    //2.String对象
+    //match() 提取 能提取多个内容
+    //replace() 替换
+    //split()   切割
+    //search()
+
+
+    var str = '张三: 2500, 李四: 3000, 王五:5000';
+    var reg = /\d+/g;
+    
+    // exec() 只返回一个匹配到的结果 ，如果没有匹配的内容就放回null
+   /*
+    var content = reg.exec(str);
+    console.log(content);//-->2500
+    content = reg.exec(str);
+    console.log(content);//-->3000
+    content = reg.exec(str);
+    console.log(content);//-->5000
+    */
+
+   do {
+       var content = reg.exec(str);
+       if (content){
+           console.log(content[0]);
+       }
+   }while (content)
+
+</script>
+</body>
+</html>

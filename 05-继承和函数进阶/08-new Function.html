@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>newFunction</title>
+    <script>
+        //第三种函数定义new Function()
+        /*var fn = new Function('var name = "zs";console.log(name)');
+        fn();*/
+
+        var fn = new Function('a','b','var name = "zs";console.log(a + b)');
+        fn(3,4);
+
+
+
+
+    </script>
+</head>
+<body>
+
+</body>
+</html>

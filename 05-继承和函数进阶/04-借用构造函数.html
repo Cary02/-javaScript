@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>借用构造函数</title>
+    <script>
+
+
+        function Person(name, age, sex) {
+            this.name = name;
+            this.age = age;
+            this.sex = sex;
+        }
+
+        //通过prototype添加的属性在Student中是访问不到的，只能在Person中通过this.sayHi = function添加，太多学生创建的话会导致内存问题
+        Person.prototype.sayHi = function () {
+            console.log(111);
+        };
+        function Student(name, age, sex, score) {
+            //借用构造函数
+            Person.call( this, name, age, sex );
+            this.score = score;
+        }
+
+        var s1 = new Student( 'zs', 18, '男', 100 );
+        console.dir(s1);
+        Student.prototype = new Person();
+        Student.prototype.constructor = Student;
+
+
+    </script>
+</head>
+<body>
+
+</body>
+</html>

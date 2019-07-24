@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>组合继承</title>
+    <script>
+
+        function Person (name, age,sex) {
+            this.name = name;
+            this.age = age;
+            this.sex = sex;
+        }
+
+        Person.prototype.sayHi = function () {
+            console.log(111);
+        }
+        function Student (name,age,sex,score) {
+            Person.call(this,name,age,sex);
+            this.score = score;
+        }
+        Student.prototype = Person.prototype;
+        Student.prototype.constructor = Student;
+        //当Student添加特有方法的时候Person也会自动增加。为什么？
+        /*因为Person.prototype是一个对象，当Person.prototype的原型赋值给了Student.prototype的时候，也把Person.prototype的
+        内存地址赋值给了Student.prototype，所以当Student.prototype添加特有的方法时，就保存到了Person.prototype的内存空间里*/
+        //Student特有方法
+        Student.prototype.exam = function () {
+            console.log('考试');
+        }
+
+
+
+        var s1 = new Student('zs',19,'男',100);
+        console.dir(s1);
+
+        var p1 = new Person('zs',19,'男',100);
+        console.dir(p1);
+
+
+
+
+
+
+
+
+
+    </script>
+</head>
+<body>
+
+</body>
+</html>

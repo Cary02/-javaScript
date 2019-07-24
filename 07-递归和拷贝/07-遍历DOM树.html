@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>遍历DOM树</title>
+</head>
+<body>
+  <h1>遍历 DOM 树</h1>
+  <p style="color: green;">Tip: 可以在遍历的回调函数中任意定制需求</p>
+  <div>
+    <ul id="list">
+      <li>123</li>
+      <li>456</li>
+      <li>789</li>
+    </ul>
+    <div>
+      <div>
+        <span>haha</span>
+      </div>
+    </div>
+  </div>
+  <div id="demo_node">
+    <ul>
+      <li>123</li>
+    </ul>
+    <p>hello</p>
+    <h2>world</h2>
+    <div>
+      <p>dsa</p>
+      <h3>
+        <span>dsads</span>
+      </h3>
+    </div>
+  </div>
+  <script>
+    // 遍历指定元素下所有的子元素
+    function loadTree(parent, callback) {
+      for (var i = 0; i < parent.children.length; i++) {
+        // 遍历第一级子元素
+        var child = parent.children[i];
+        // console.log(child);
+        if (callback) {
+          // 处理找到的子元素
+          callback(child);
+        }
+
+        // 递归调用
+        loadTree(child);
+      }
+    }
+
+    var ul = document.getElementById('list');
+    loadTree(ul, function (element) {
+      element.onclick = function () {
+        console.log(this.innerText);
+      }
+    });
+  </script>
+</body>
+</html>

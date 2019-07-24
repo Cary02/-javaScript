@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>函数的其他成员</title>
+    <script>
+
+        function fn(x,y) {
+            //函数内部有一个私有的变量arguments
+
+            //伪数组  获取函数的实参
+            console.log(fn.arguments);
+            //函数的调用者，在全局范围调用的时候caller 是null
+            console.log(fn.caller);
+            //函数的形参个数
+            console.log(fn.length);
+            //函数的名称  字符串类型
+            console.log(fn.name);
+
+        }
+        function fn1 () {
+            fn(1,2);
+            console.dir(fn);
+        }
+        fn1();
+
+
+        //Math.max()实现过程
+
+         function getMax() {
+             var max = arguments[0];
+             for (var i = 1; i <arguments.length;i++) {
+                 if (max < arguments[i]) {
+                     max = arguments[i];
+                 }
+             }
+             return max;
+         }
+
+         console.log(getMax(5,7,3,8,45,78));
+
+
+
+
+    </script>
+</head>
+<body>
+
+</body>
+</html>

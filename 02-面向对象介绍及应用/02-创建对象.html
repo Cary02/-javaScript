@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>创建对象</title>
+</head>
+<body>
+
+</body>
+<script>
+    /*//1.Object   系统提供的构造函数
+    var hero = new Object();   //空对象
+    hero.name = 'zf';
+    hero.blood = 100;
+    hero.weapon = '剑';
+    hero.attack = function () {
+        console.log(hero.name + '用' + hero.weapon +'攻击敌人');
+    }
+    hero.attack();
+
+
+    //2.对象字面量
+    var hero = {
+        name: '刘备',
+        blood: 100,
+        weapon: '枪',
+        attack: function () {
+            console.log(hero.name + '用' + hero.weapon + '攻击敌人');
+        }
+    };
+    hero.attack();*/
+
+
+    //3.工厂函数，创建多个对象
+
+    function createHero(name,blood,weapon) {
+        var o = new Object();
+        o.name = name;
+        o.blood = blood;
+        o.weapon = weapon;
+        o.attack = function () {
+            console.log(this.name + '用' + this.weapon + '攻击敌人');
+        }
+        return o;
+    }
+
+    var hero1 = createHero('刘备', 100, '剑');
+    var hero2 = createHero('张飞', 100, '刀');
+    hero1.attack();
+    hero2.attack();
+
+
+</script>
+</html>

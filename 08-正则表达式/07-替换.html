@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>替换</title>
+    <script>
+        //替换所有空白
+        var str = '     123ade    sd     aaa fdf ff df  ';
+        //只能替换掉前后的空格
+        console.log(str.trim());
+        // replace() 只能替换掉第一个查找到的内容
+        console.log(str.replace(' ','x'));
+        //正则表达式
+        console.log(str.replace(/\s+/g,''));
+        //其他方式join()指定一个字符串来分隔数组的每个元素。如果需要，将分隔符转换为字符串。
+        // 如果省略()，数组元素用逗号分隔。默认为 ","。如果separator是空字符串("")，则所有元素之间都没有任何字符。
+        console.log(str.split(' ').join(''));
+
+
+        //2.把所有的，和,替换成.
+        var str = 'asd,gfrg，sdfswe,dasd，a';
+        console.log(str.replace(/,|，/g,'.'));
+
+
+
+
+    </script>
+</head>
+<body>
+
+</body>
+</html>
